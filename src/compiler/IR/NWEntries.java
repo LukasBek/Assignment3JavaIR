@@ -4,7 +4,7 @@ import compiler.parsers.Date;
 import compiler.parsers.Packet;
 import compiler.parsers.Time;
 
-public class NWEntry {
+public class NWEntries {
 	
 	private Date date;
 	private Time time;
@@ -12,7 +12,7 @@ public class NWEntry {
 	
 //	entry : date time packet;
 	
-	public NWEntry(Date date, Time time, Packet packet){
+	public NWEntries(Date date, Time time, Packet packet){
 		this.date = date;
 		this.time = time;
 		this.packet = packet;
