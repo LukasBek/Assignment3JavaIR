@@ -1,10 +1,10 @@
-package compiler.parsers;
+package compiler.IR;
 
-public class Ipv4Tos {
-	
+public class Tag {
+
 	Hex hex;
 	
-	public Ipv4Tos(Hex hex){
+	public Tag(Hex hex){
 		this.hex = hex;
 	}
 
@@ -15,5 +15,4 @@ public class Ipv4Tos {
 	public void setHex(Hex hex) {
 		this.hex = hex;
 	}
-
 }

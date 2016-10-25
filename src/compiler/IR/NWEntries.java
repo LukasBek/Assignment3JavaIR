@@ -1,9 +1,5 @@
 package compiler.IR;
 
-import compiler.parsers.Date;
-import compiler.parsers.Packet;
-import compiler.parsers.Time;
-
 public class NWEntries {
 	
 	private LinkedList<Entry> entries;

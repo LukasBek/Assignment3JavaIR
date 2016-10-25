@@ -3,7 +3,6 @@ package compiler.IR;
 import java.util.LinkedList;
 
 import compiler.FRONTEND.Assignment4grammarParser;
-import compiler.parsers.Entry;
 
 public class IRBuilder {
 
