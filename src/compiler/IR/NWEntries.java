@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class NWEntries {
 	
-	private LinkedList<Entry> entries;
+	private LinkedList<NWEntry> entries;
 	
 //	entry : date time packet;
 	
@@ -12,11 +12,11 @@ public class NWEntries {
 		
 	}
 	
-	public NWEntries(LinkedList<Entry> ent) {
+	public NWEntries(LinkedList<NWEntry> ent) {
 		this.entries = ent;
 	}
 
-	public LinkedList<Entry> getEntry() {
+	public LinkedList<NWEntry> getEntry() {
 		return entries;
 	}
 

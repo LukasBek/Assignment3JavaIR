@@ -2,29 +2,52 @@ package compiler.IR;
 
 import java.util.LinkedList;
 
-import compiler.FRONTEND.Assignment4grammarParser;
+import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
-public class IRBuilder {
+import compiler.FRONTEND.Assignment4grammarParser;
+import compiler.FRONTEND.Assignment4grammarParser.DateContext;
+import compiler.FRONTEND.Assignment4grammarParser.EntriesContext;
+import compiler.FRONTEND.Assignment4grammarParser.PacketContext;
+import compiler.FRONTEND.Assignment4grammarParser.TimeContext;
+import compiler.FRONTEND.Assignment4grammarParser.EntryContext;
+import compiler.FRONTEND.Assignment4grammarVisitor;
+
+public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignment4grammarVisitor<IR>{
 
 //	entries : entry *;
 	
-	public NWEntries visitEntry(Assignment4grammarParser.EntriesContext ctx){
+	public NWEntries visitEntry(EntriesContext ectx){
 		
-		LinkedList<Entry> entry = new LinkedList<Entry>();
+		LinkedList<NWEntry> entry = new LinkedList<NWEntry>();
 		
-		for (Entries : ctx. ) {
-			classDeclarations.add(visitClassDeclaration(c));
-		
-		networkHeaders.add()	
-
-
-	
-	}
-	
+		for (EntryContext c : ectx.entry() ) {
+			entry.add(visitEntry(c));
+		}
+		return new NWEntries(entry);
+	}	
 	
 //	entry : date time packet;
 	
-	public NWEntry visitEntry(Assignment4grammarParser.EntryContext ctx){
+	public NWEntry visitEntry(EntryContext ectx){
+//		TimeContext time = ectx.time();
+//		DateContext date = ectx.date();
+//		PacketContext packet = ectx.packet();
+		
+		String time = ectx.time().getText();
+		String date = ectx.date().getText();
+		PacketContext packet = ectx.packet();
+		visitPacket(packet);
+		
+		return new NWEntry(date, time, packet);
+		
+	}
+	
+	public Packet visitPacket(PacketContext packetContext){
+
+		packetContext.
+	
+		
+		return ;
 		
 	}
 

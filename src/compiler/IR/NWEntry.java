@@ -1,10 +1,19 @@
 package compiler.IR;
 
-public class Entry {
+import compiler.FRONTEND.Assignment4grammarParser.DateContext;
+import compiler.FRONTEND.Assignment4grammarParser.PacketContext;
+import compiler.FRONTEND.Assignment4grammarParser.TimeContext;
+
+public class NWEntry {
 	private Date date;
 	private Time time;
 	private Packet packet;
-	
+
+	public NWEntry(DateContext date, TimeContext time, PacketContext packet) {
+		this.date = date;
+		this.time = time; 
+		this.packet = packet;
+	}
 	public Date getDate() {
 		return date;
 	}
