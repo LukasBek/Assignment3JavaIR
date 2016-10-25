@@ -1,4 +1,4 @@
-package compiler.parsers;
+package compiler.IR;
 
 public class Ipv4Proto {
 

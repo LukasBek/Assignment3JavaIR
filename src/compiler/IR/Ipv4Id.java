@@ -1,17 +1,17 @@
-package compiler.parsers;
+package compiler.IR;
 
-public class Length {
+public class Ipv4Id {
 
 	int number;
-	
-	public Length(int number){
+
+	public Ipv4Id(int number){
 		this.number = number;
 	}
-
+	
 	public int getNumber() {
 		return number;
 	}
-
+	
 	public void setNumber(int number) {
 		this.number = number;
 	}

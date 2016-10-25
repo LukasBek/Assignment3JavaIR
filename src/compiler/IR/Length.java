@@ -1,10 +1,10 @@
-package compiler.parsers;
+package compiler.IR;
 
-public class Ipv4Ttl {
-	
+public class Length {
+
 	int number;
 	
-	public Ipv4Ttl(int number){
+	public Length(int number){
 		this.number = number;
 	}
 
@@ -15,5 +15,4 @@ public class Ipv4Ttl {
 	public void setNumber(int number) {
 		this.number = number;
 	}
-
 }

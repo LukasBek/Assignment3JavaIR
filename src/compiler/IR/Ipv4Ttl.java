@@ -1,18 +1,19 @@
-package compiler.parsers;
+package compiler.IR;
 
-public class Ipv4Id {
-
+public class Ipv4Ttl {
+	
 	int number;
-
-	public Ipv4Id(int number){
+	
+	public Ipv4Ttl(int number){
 		this.number = number;
 	}
-	
+
 	public int getNumber() {
 		return number;
 	}
-	
+
 	public void setNumber(int number) {
 		this.number = number;
 	}
+
 }

@@ -1,4 +1,4 @@
-package compiler.parsers;
+package compiler.IR;
 
 public class Word {
 
