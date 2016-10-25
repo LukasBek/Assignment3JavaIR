@@ -3,6 +3,7 @@ package compiler.IR;
 import java.util.LinkedList;
 
 import compiler.FRONTEND.Assignment4grammarParser;
+import compiler.parsers.Entry;
 
 public class IRBuilder {
 
@@ -10,9 +11,17 @@ public class IRBuilder {
 	
 	public NWEntries visitEntry(Assignment4grammarParser.EntriesContext ctx){
 		
-		LinkedList<NWEntry> networkHeaders = new LinkedList<NWEntry>();
+		LinkedList<Entry> entry = new LinkedList<Entry>();
+		
+		for (Entries : ctx. ) {
+			classDeclarations.add(visitClassDeclaration(c));
+		
 		networkHeaders.add()	
+
+
+	
 	}
+	
 	
 //	entry : date time packet;
 	

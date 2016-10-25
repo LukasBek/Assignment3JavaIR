@@ -6,9 +6,7 @@ import compiler.parsers.Time;
 
 public class NWEntries {
 	
-	private Date date;
-	private Time time;
-	private Packet packet;
+	private LinkedList<Entry> entries;
 	
 //	entry : date time packet;
 	
