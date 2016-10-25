@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class Ipv4Id {
+public class Ipv4Id extends IR {
 
 	int number;
 

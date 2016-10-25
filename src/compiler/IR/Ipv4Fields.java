@@ -1,6 +1,6 @@
 	package compiler.IR;
 
-public class Ipv4Fields {
+public class Ipv4Fields extends IR {
 
 	Ipv4Tos ipv4Tos;
 	Ipv4Ttl ipv4Ttl;

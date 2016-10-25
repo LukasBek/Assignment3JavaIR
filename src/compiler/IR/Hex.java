@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class Hex {
+public class Hex extends IR {
 	
 	private String string;
 

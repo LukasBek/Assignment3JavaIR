@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class Ipv4Proto {
+public class Ipv4Proto extends IR {
 
 	ProtName protName;
 	int number;

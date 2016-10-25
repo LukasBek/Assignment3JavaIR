@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class Ipv4Tos {
+public class Ipv4Tos extends IR {
 	
 	Hex hex;
 	

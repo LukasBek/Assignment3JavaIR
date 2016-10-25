@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class Word {
+public class Word extends IR {
 
 	private Hex hex1, hex2, hex3, hex4;
 	

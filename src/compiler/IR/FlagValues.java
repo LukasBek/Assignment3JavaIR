@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class FlagValues {
+public class FlagValues extends IR {
 
 	String value;
 	

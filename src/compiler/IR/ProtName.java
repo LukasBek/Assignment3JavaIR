@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class ProtName {
+public class ProtName extends IR {
 
 	String name;
 	

@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class DumpLine {
+public class DumpLine extends IR {
 
 	Hex hex;
 	String string;

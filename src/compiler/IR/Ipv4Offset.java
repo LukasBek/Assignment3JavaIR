@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class Ipv4Offset {
+public class Ipv4Offset extends IR {
 
 	int number;
 	

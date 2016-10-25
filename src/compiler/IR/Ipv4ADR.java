@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class Ipv4ADR {
+public class Ipv4ADR extends IR {
 	
 	int octet1, octet2, octet3, octet4, port;
 	

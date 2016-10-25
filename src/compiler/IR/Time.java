@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class Time {
+public class Time extends IR {
 
 	private int hours, minutes;
 	private double seconds;

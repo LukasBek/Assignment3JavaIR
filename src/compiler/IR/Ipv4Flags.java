@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class Ipv4Flags {
+public class Ipv4Flags extends IR {
 
 	private FlagValues fV;
 	

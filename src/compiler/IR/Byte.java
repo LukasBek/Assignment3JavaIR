@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class Byte {
+public class Byte extends IR {
 	
 	private Hex hex1;
 	private Hex hex2;

@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class Mac {
+public class Mac extends IR {
 	
 	private Byte byte1;
 	private Byte byte2;

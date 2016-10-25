@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class Length {
+public class Length extends IR {
 
 	int number;
 	

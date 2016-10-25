@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class Ipv4 {
+public class Ipv4 extends IR {
 	
 	Tag tag;
 	

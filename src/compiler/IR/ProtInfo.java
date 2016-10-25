@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class ProtInfo {
+public class ProtInfo extends IR {
 
 	Length length;
 	ProtName protName;

@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class Type {
+public class Type extends IR {
 	
 	private Ipv4 ipv4;
 	

@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class Tag {
+public class Tag extends IR {
 
 	Hex hex;
 	

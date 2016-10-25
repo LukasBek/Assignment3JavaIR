@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class Packet {
+public class Packet extends IR {
 	
 	
 	// packet : mac '>' mac ',' 'ethertype' type ',' length ':' ipv4content;

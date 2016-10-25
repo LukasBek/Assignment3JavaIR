@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class Ipv4Ttl {
+public class Ipv4Ttl extends IR {
 	
 	int number;
 	

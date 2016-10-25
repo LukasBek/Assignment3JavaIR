@@ -1,6 +1,6 @@
 package compiler.IR;
 
-public class Date {
+public class Date extends IR {
 
 	private int year, month, day;
 	
