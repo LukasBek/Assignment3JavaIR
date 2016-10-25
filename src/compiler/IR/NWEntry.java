@@ -4,7 +4,7 @@ import compiler.FRONTEND.Assignment4grammarParser.DateContext;
 import compiler.FRONTEND.Assignment4grammarParser.PacketContext;
 import compiler.FRONTEND.Assignment4grammarParser.TimeContext;
 
-public class NWEntry {
+public class NWEntry extends IR {
 	private Date date;
 	private Time time;
 	private Packet packet;

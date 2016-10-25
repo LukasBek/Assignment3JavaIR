@@ -2,7 +2,7 @@ package compiler.IR;
 
 import java.util.LinkedList;
 
-public class NWEntries {
+public class NWEntries extends IR{
 	
 	private LinkedList<NWEntry> entries;
 	

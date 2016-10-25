@@ -35,14 +35,14 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 	public NWEntries visitEntries(EntriesContext ctx) {
 		LinkedList<NWEntry> entry = new LinkedList<NWEntry>();
 		
-		for (EntryContext c : ectx.entry() ) {
+		for (EntryContext c : ctx.entry() ) {
 			entry.add(visitEntry(c));
 		}
 		return new NWEntries(entry);
 	}
 	
 	@Override
-	public IR visitEntry(EntryContext ctx) {
+	public NWEntry visitEntry(EntryContext ctx) {
 		// TODO Auto-generated method stub
 		return null;
 	}
