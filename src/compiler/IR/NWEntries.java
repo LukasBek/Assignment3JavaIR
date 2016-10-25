@@ -1,28 +1,25 @@
 package compiler.IR;
 
+import java.util.LinkedList;
+
 public class NWEntries {
 	
 	private LinkedList<Entry> entries;
 	
 //	entry : date time packet;
 	
-	public NWEntries(Date date, Time time, Packet packet){
-		this.date = date;
-		this.time = time;
-		this.packet = packet;
+	public NWEntries(){
+		
 	}
 	
-	public String getDate(){
-		return date.toString();
+	public NWEntries(LinkedList<Entry> ent) {
+		this.entries = ent;
 	}
-	
-	public String getTime(){
-		return time.toString();
+
+	public LinkedList<Entry> getEntry() {
+		return entries;
 	}
-	
-//	??????
-//	public String getPacket(){
-//		return packet.toString();
-//	}
+
+
 
 }
