@@ -1,16 +1,15 @@
 package compiler.FRONTEND;
-
-//Generated from C:\Users\lukas\Dropbox\DTU\Compiler Teknik\ass4\Assignment4grammar.g4 by ANTLR 4.1
+// Generated from C:\Users\lukas\Dropbox\DTU\Compiler Teknik\ass4\Assignment4grammar.g4 by ANTLR 4.1
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
-* This interface defines a complete generic visitor for a parse tree produced
-* by {@link Assignment4grammarParser}.
-*
-* @param <T> The return type of the visit operation. Use {@link Void} for
-* operations with no return type.
-*/
+ * This interface defines a complete generic visitor for a parse tree produced
+ * by {@link Assignment4grammarParser}.
+ *
+ * @param <T> The return type of the visit operation. Use {@link Void} for
+ * operations with no return type.
+ */
 public interface Assignment4grammarVisitor<T> extends ParseTreeVisitor<T> {
 	/**
 	 * Visit a parse tree produced by {@link Assignment4grammarParser#date}.

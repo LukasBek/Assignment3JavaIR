@@ -1,5 +1,5 @@
 package compiler.FRONTEND;
-//Generated from C:\Users\lukas\Dropbox\DTU\Compiler Teknik\ass4\Assignment4grammar.g4 by ANTLR 4.1
+// Generated from C:\Users\lukas\Dropbox\DTU\Compiler Teknik\ass4\Assignment4grammar.g4 by ANTLR 4.1
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -7,10 +7,10 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
-* This class provides an empty implementation of {@link Assignment4grammarListener},
-* which can be extended to create a listener which only needs to handle a subset
-* of the available methods.
-*/
+ * This class provides an empty implementation of {@link Assignment4grammarListener},
+ * which can be extended to create a listener which only needs to handle a subset
+ * of the available methods.
+ */
 public class Assignment4grammarBaseListener implements Assignment4grammarListener {
 	/**
 	 * {@inheritDoc}

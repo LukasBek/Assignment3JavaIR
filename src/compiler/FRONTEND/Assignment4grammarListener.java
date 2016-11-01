@@ -1,13 +1,12 @@
 package compiler.FRONTEND;
-
-//Generated from C:\Users\lukas\Dropbox\DTU\Compiler Teknik\ass4\Assignment4grammar.g4 by ANTLR 4.1
+// Generated from C:\Users\lukas\Dropbox\DTU\Compiler Teknik\ass4\Assignment4grammar.g4 by ANTLR 4.1
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
-* This interface defines a complete listener for a parse tree produced by
-* {@link Assignment4grammarParser}.
-*/
+ * This interface defines a complete listener for a parse tree produced by
+ * {@link Assignment4grammarParser}.
+ */
 public interface Assignment4grammarListener extends ParseTreeListener {
 	/**
 	 * Enter a parse tree produced by {@link Assignment4grammarParser#date}.
