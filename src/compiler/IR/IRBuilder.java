@@ -139,14 +139,19 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 
 	@Override
 	public Ipv4Offset visitIpv4offset(Ipv4offsetContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		int Ipv4Offset = Integer.parseInt(ctx.getText());
+		
+		return new Ipv4Offset(Ipv4Offset);
 	}
 
 	@Override
 	public ProtInfo visitProtinfo(ProtinfoContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Length length = visitLength(ctx.length());
+		ProtName protName = visitProtname(ctx.protname());
+		
+		return new ProtInfo(length, protName);
 	}
 
 	@Override
