@@ -56,8 +56,11 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 	
 	@Override
 	public Date visitDate(DateContext ctx) {
-		
-		return null;
+		int year = Integer.parseInt(ctx.NUMBER(0).getText());
+		int month = Integer.parseInt(ctx.NUMBER(1).getText());
+		int day = Integer.parseInt(ctx.NUMBER(2).getText());
+		Date date = new Date(year, month, day);
+		return date;
 	}
 	
 	@Override
