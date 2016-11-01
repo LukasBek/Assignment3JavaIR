@@ -86,16 +86,18 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 
 	@Override
 	public Ipv4Content visitIpv4content(Ipv4contentContext ctx) {
-		Ipv4Fields fields = new Ipv4Fields(ctx.ipv4fields());
-		Ipv4ADR adr1 = new Ipv4Fields(ctx.IPV4ADR(0));
-		Ipv4ADR adr2 = new Ipv4Fields(ctx.IPV4ADR(1));
+		Ipv4Fields fields = visitIpv4fields(ctx.ipv4fields());
+		String adr1 = ctx.IPV4ADR(0).getText();
+		String adr2 = ctx.IPV4ADR(1).getText();
+		
+		
 		
 		return null;
 	}	
 	
 	@Override
 	public Ipv4Ttl visitIpv4ttl(Ipv4ttlContext ctx) {
-		// TODO Auto-generated method stub
+		int number = Integer.parseInt(ctx.getText());
 		return null;
 	}
 
