@@ -161,20 +161,25 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 
 	@Override
 	public FlagValues visitFlagvalues(FlagvaluesContext ctx) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public Ipv4Tos visitIpv4tos(Ipv4tosContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String hexName = ctx.HEXNUMBER().getText();
+		Hex hex = new Hex(hexName);
+		
+		return new Ipv4Tos(hex);
 	}
 
 	@Override
 	public ProtName visitProtname(ProtnameContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String protname = ctx.getText();
+		
+		return new ProtName(protname);
 	}
 
 	@Override
@@ -193,7 +198,10 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 
 	@Override
 	public Tag visitTag(TagContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String hexName = ctx.HEXNUMBER().getText();
+		Hex hex = new Hex(hexName);
+		
+		return new Tag(hex);
 	}
 }
