@@ -1,12 +1,15 @@
 package compiler.IR;
 
+import java.util.ArrayList;
+
 public class DumpLine extends IR {
 
-	Hex hex;
-	String string;
+	ArrayList<Dump> array = new ArrayList<Dump>();
+
+	public DumpLine(){
 	
-	public DumpLine(Hex hex, String string){
-		this.hex = hex;
-		this.string = string;
+	}
+	public void addDump(Dump dump){
+		array.add(dump);
 	}
 }

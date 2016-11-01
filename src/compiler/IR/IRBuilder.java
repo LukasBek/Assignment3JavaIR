@@ -30,6 +30,7 @@ import compiler.FRONTEND.Assignment4grammarParser.MacContext;
 import compiler.FRONTEND.Assignment4grammarVisitor;
 
 public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignment4grammarVisitor<IR>{
+	DumpLine dumpLine;
 
 	@Override
 	public NWEntries visitEntries(EntriesContext ctx) {
@@ -87,13 +88,32 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 	@Override
 	public Ipv4Content visitIpv4content(Ipv4contentContext ctx) {
 		Ipv4Fields fields = visitIpv4fields(ctx.ipv4fields());
-		String adr1 = ctx.IPV4ADR(0).getText();
-		String adr2 = ctx.IPV4ADR(1).getText();
-		//LAv om til parserlol
+		String adr1S = ctx.IPV4ADR(0).getText();
+		String adr2S = ctx.IPV4ADR(1).getText();
+		Ipv4ADR adr1 = convertAddress(adr1S);
+		Ipv4ADR adr2 = convertAddress(adr2S);
+		ProtInfo prot = visitProtinfo(ctx.protinfo());
+		dumpLine = new DumpLine();
+		for (int i = 0; i < ctx.dumpline().size(); i++){
+			Hex hex = new Hex(ctx.dumpline(i).HEXNUMBER().getText());
+			Dump dump = new Dump(hex, ctx.dumpline(i).getText());
+			dumpLine.addDump(dump);
+		}
 		
+		Ipv4Content content = new Ipv4Content(fields, adr1, adr2, prot, dumpLine);
 		
-		return null;
+		return content;
 	}	
+	private Ipv4ADR convertAddress(String adrString){
+		String[] adrParts = adrString.split(".");
+		int oct1 = Integer.parseInt(adrParts[0]);
+		int oct2 = Integer.parseInt(adrParts[1]);
+		int oct3 = Integer.parseInt(adrParts[2]);
+		int oct4 = Integer.parseInt(adrParts[3]);
+		int port = Integer.parseInt(adrParts[4]);
+		
+		return new Ipv4ADR(oct1, oct2, oct3, oct4, port);
+	}
 	
 	@Override
 	public Ipv4Ttl visitIpv4ttl(Ipv4ttlContext ctx) {
@@ -111,11 +131,7 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 
 	@Override
 	public DumpLine visitDumpline(DumplineContext ctx) {
-		String hexString = ctx.HEXNUMBER().getText();
-		Hex hex = new Hex(hexString);
-		String string = ctx.getText(); //TODO navngives i antlr
-		DumpLine dump = new DumpLine(hex, string);
-		return dump;
+		return dumpLine;
 	}
 
 	@Override
