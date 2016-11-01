@@ -65,20 +65,31 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 	
 	@Override
 	public Time visitTime(TimeContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		int hours = Integer.parseInt(ctx.NUMBER(0).getText());
+		int minutes = Integer.parseInt(ctx.NUMBER(1).getText());
+		double seconds = Integer.parseInt(ctx.NUMBER(2).getText());
+		Time time = new Time(hours, minutes, seconds);
+		return time;
 	}	
 
 	@Override
 	public Packet visitPacket(PacketContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		Mac mac1 = visitMac(ctx.mac(0));
+		Mac mac2 = visitMac(ctx.mac(1));
+		Type type = visitType(ctx.type());
+		Length length = visitLength(ctx.length());
+		Ipv4Content content = visitIpv4content(ctx.ipv4content());
+		Packet packet = new Packet(mac1, mac2, type, length, content);
+		return packet;
 	}
 
 
 	@Override
 	public Ipv4Content visitIpv4content(Ipv4contentContext ctx) {
-		// TODO Auto-generated method stub
+		Ipv4Fields fields = new Ipv4Fields(ctx.ipv4fields());
+		Ipv4ADR adr1 = new Ipv4Fields(ctx.IPV4ADR(0));
+		Ipv4ADR adr2 = new Ipv4Fields(ctx.IPV4ADR(1));
+		
 		return null;
 	}	
 	
