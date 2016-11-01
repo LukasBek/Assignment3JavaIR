@@ -89,7 +89,7 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 		Ipv4Fields fields = visitIpv4fields(ctx.ipv4fields());
 		String adr1 = ctx.IPV4ADR(0).getText();
 		String adr2 = ctx.IPV4ADR(1).getText();
-		
+		//LAv om til parserlol
 		
 		
 		return null;
@@ -97,44 +97,51 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 	
 	@Override
 	public Ipv4Ttl visitIpv4ttl(Ipv4ttlContext ctx) {
-		int number = Integer.parseInt(ctx.getText());
-		return null;
+		int number = Integer.parseInt(ctx.NUMBER().getText());
+		Ipv4Ttl ttl = new Ipv4Ttl(number);
+		return ttl;
 	}
 
 	@Override
 	public Ipv4Flags visitIpv4flags(Ipv4flagsContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		FlagValues fv = visitFlagvalues(ctx.flagvalues());
+		Ipv4Flags flags = new Ipv4Flags(fv);
+		return flags;
 	}
 
 	@Override
 	public DumpLine visitDumpline(DumplineContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		String hexString = ctx.HEXNUMBER().getText();
+		Hex hex = new Hex(hexString);
+		String string = ctx.getText(); //TODO navngives i antlr
+		DumpLine dump = new DumpLine(hex, string);
+		return dump;
 	}
 
 	@Override
 	public Length visitLength(LengthContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		int length = Integer.parseInt(ctx.NUMBER().getText());
+		Length length2 = new Length(length);
+		return length2;
 	}
 
 	@Override
 	public Type visitType(TypeContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		Ipv4 ipv4 = visitIpv4(ctx.ipv4());
+		Type type = new Type(ipv4);
+		return type;
 	}
 
 	@Override
 	public Ipv4Id visitIpv4id(Ipv4idContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		Ipv4Id id = new Ipv4Id(Integer.parseInt(ctx.NUMBER().getText()));
+		return id;
 	}
 
 	@Override
 	public Mac visitMac(MacContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		Mac mac = new Mac(ctx.MAC().getText());
+		return mac;
 	}
 
 	@Override
