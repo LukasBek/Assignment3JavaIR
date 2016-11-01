@@ -43,162 +43,135 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 	
 	@Override
 	public NWEntry visitEntry(EntryContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public IR visitDate(DateContext ctx) {
-		
-		return null;
-	}
-	
-	@Override
-	public IR visitTime(TimeContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
-	}	
-
-	@Override
-	public IR visitPacket(PacketContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public IR visitIpv4content(Ipv4contentContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
-	}	
-	
-	@Override
-	public IR visitIpv4ttl(Ipv4ttlContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IR visitIpv4flags(Ipv4flagsContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IR visitDumpline(DumplineContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IR visitLength(LengthContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IR visitType(TypeContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IR visitIpv4id(Ipv4idContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IR visitMac(MacContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IR visitIpv4offset(Ipv4offsetContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IR visitProtinfo(ProtinfoContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IR visitIpv4proto(Ipv4protoContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IR visitIpv4(Ipv4Context ctx) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IR visitFlagvalues(FlagvaluesContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IR visitIpv4tos(Ipv4tosContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IR visitProtname(ProtnameContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IR visitIpv4fields(Ipv4fieldsContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IR visitTag(TagContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-
-//	entries : entry *;
-	
-	public NWEntries visitEntry(EntriesContext ectx){
-		
-		
-	}	
-	
-//	entry : date time packet;
-	
-//	public NWEntry visitEntry(EntryContext ectx){
-////		TimeContext time = ectx.time();
-////		DateContext date = ectx.date();
-////		PacketContext packet = ectx.packet();
-//		
-//		String time = ectx.time().getText();
-//		String date = ectx.date().getText();
+//		TimeContext time = ectx.time();
+//		DateContext date = ectx.date();
 //		PacketContext packet = ectx.packet();
-//		visitPacket(packet);
-//		
-//		return new NWEntry(date, time, packet);
-//		
-//	}
-//	
-//	public Packet visitPacket(PacketContext packetContext){
-//
-//		packetContext.
-//	
-//		
-//		return ;
-//		
-//	}
-//
+		
+		Time time = visitTime(ctx.time());
+		Date date = visitDate(ctx.date());
+		Packet packet = visitPacket(ctx.packet());
+	
+		return new NWEntry(date, time, packet);
+	}
+	
+	@Override
+	public Date visitDate(DateContext ctx) {
+		
+		return null;
+	}
+	
+	@Override
+	public Time visitTime(TimeContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}	
+
+	@Override
+	public Packet visitPacket(PacketContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Ipv4Content visitIpv4content(Ipv4contentContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}	
+	
+	@Override
+	public Ipv4Ttl visitIpv4ttl(Ipv4ttlContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Ipv4Flags visitIpv4flags(Ipv4flagsContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DumpLine visitDumpline(DumplineContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Length visitLength(LengthContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Type visitType(TypeContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Ipv4Id visitIpv4id(Ipv4idContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mac visitMac(MacContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Ipv4Offset visitIpv4offset(Ipv4offsetContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ProtInfo visitProtinfo(ProtinfoContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Ipv4Proto visitIpv4proto(Ipv4protoContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Ipv4 visitIpv4(Ipv4Context ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public FlagValues visitFlagvalues(FlagvaluesContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Ipv4Tos visitIpv4tos(Ipv4tosContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ProtName visitProtname(ProtnameContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Ipv4Fields visitIpv4fields(Ipv4fieldsContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Tag visitTag(TagContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

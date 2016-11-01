@@ -9,7 +9,7 @@ public class NWEntry extends IR {
 	private Time time;
 	private Packet packet;
 
-	public NWEntry(DateContext date, TimeContext time, PacketContext packet) {
+	public NWEntry(Date date, Time time, Packet packet) {
 		this.date = date;
 		this.time = time; 
 		this.packet = packet;
