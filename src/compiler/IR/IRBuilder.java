@@ -151,20 +151,27 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 
 	@Override
 	public Ipv4Proto visitIpv4proto(Ipv4protoContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		ProtName protName = visitProtname(ctx.protname());
+		int number = Integer.parseInt(ctx.NUMBER().getText());
+		
+		return new Ipv4Proto(protName, number);
 	}
 
 	@Override
 	public Ipv4 visitIpv4(Ipv4Context ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Tag tag = visitTag(ctx.tag());
+		
+		return new Ipv4(tag);
 	}
 
 	@Override
 	public FlagValues visitFlagvalues(FlagvaluesContext ctx) {
 
-		return null;
+		String Flagvalue = ctx.getText();
+		
+		return new FlagValues(Flagvalue);
 	}
 
 	@Override
