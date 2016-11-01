@@ -181,8 +181,16 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 
 	@Override
 	public Ipv4Fields visitIpv4fields(Ipv4fieldsContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Ipv4Tos ipv4Tos = visitIpv4tos(ctx.ipv4tos());
+		Ipv4Ttl ipv4Ttl = visitIpv4ttl(ctx.ipv4ttl());
+		Ipv4Id ipv4Id = visitIpv4id(ctx.ipv4id());
+		Ipv4Offset ipv4Offset = visitIpv4offset(ctx.ipv4offset());
+		Ipv4Flags ipv4Flags = visitIpv4flags(ctx.ipv4flags());
+		Ipv4Proto ipv4Proto = visitIpv4proto(ctx.ipv4proto());
+		Length length = visitLength(ctx.length());
+		
+		return new Ipv4Fields(ipv4Tos, ipv4Ttl, ipv4Id, ipv4Offset, ipv4Flags, ipv4Proto, length);
 	}
 
 	@Override
