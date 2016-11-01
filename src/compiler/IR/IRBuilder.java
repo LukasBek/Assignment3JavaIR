@@ -89,7 +89,7 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 		Ipv4Fields fields = visitIpv4fields(ctx.ipv4fields());
 		String adr1 = ctx.IPV4ADR(0).getText();
 		String adr2 = ctx.IPV4ADR(1).getText();
-		
+		//LAv om til parserlol
 		
 		
 		return null;
@@ -113,7 +113,7 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 	public DumpLine visitDumpline(DumplineContext ctx) {
 		String hexString = ctx.HEXNUMBER().getText();
 		Hex hex = new Hex(hexString);
-		String string = ctx.getText(); //TODO IKKE RIGTIG!??!?!?
+		String string = ctx.getText(); //TODO navngives i antlr
 		DumpLine dump = new DumpLine(hex, string);
 		return dump;
 	}
@@ -140,8 +140,8 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 
 	@Override
 	public Mac visitMac(MacContext ctx) {
-		String mac = ctx.MAC().getText(); //HVAD GØR MAN MED BYTES???
-		return null;
+		Mac mac = new Mac(ctx.MAC().getText());
+		return mac;
 	}
 
 	@Override
