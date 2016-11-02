@@ -2,6 +2,7 @@ package compiler.Phases;
 
 import java.io.PrintStream;
 
+import compiler.FRONTEND.Assignment4grammarParser.EntryContext;
 import compiler.IR.*;
 import support.IRElementVisitor;
 import support.VisitorException;
@@ -68,21 +69,30 @@ public class PrettyPrint extends IRElementVisitor<Integer> {
 //		
 //	}
 
+	
 	@Override
 	public Integer visitEntries(compiler.IR.NWEntries e) throws VisitorException {
-		// TODO Auto-generated method stub
+		
+		for (NWEntry c : e.getEntry() ) {
+			visitEntry(c);
+		}
+		
 		return null;
 	}
 
 	@Override
 	public Integer visitEntry(NWEntry e) throws VisitorException {
-		// TODO Auto-generated method stub
+
+		visitTime(e.getTime());
+		visitDate(e.getDate());
+		visitPacket(e.getPacket());
+		
 		return null;
 	}
 
 	@Override
 	public Integer visitDate(Date e) throws VisitorException {
-		// TODO Auto-generated method stub
+		pp.print();
 		return null;
 	}
 
