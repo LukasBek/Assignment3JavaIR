@@ -2,7 +2,6 @@ package compiler.Phases;
 
 import java.io.PrintStream;
 
-import compiler.FRONTEND.Assignment4grammarParser.EntryContext;
 import compiler.IR.*;
 import support.IRElementVisitor;
 import support.VisitorException;

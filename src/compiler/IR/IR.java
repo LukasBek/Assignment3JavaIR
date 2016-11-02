@@ -1,17 +1,13 @@
 package compiler.IR;
 
-import java.io.IOException;
-
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.tree.ParseTree;
-
 import compiler.FRONTEND.Assignment4grammarLexer;
 import compiler.FRONTEND.Assignment4grammarParser;
 import exceptions.CompilerException;
 import exceptions.IRParserException;
-import java.io.IOException;
 
 public class IR {
 	
@@ -28,7 +24,7 @@ public class IR {
 	public static IR Build(String filename) throws CompilerException, IRParserException{
 		ParseTree pt;
 		try {
-			CharStream input = ANTLRFileStram(filename);
+			CharStream input = ANTLRFileStream(filename);
 			
 			Assignment4grammarLexer lex = new Assignment4grammarLexer(input);
 			
@@ -50,8 +46,8 @@ public class IR {
 		return new IR((NWEntries) builder.visit(pt));
 	}
 
-	private static CharStream ANTLRFileStram(String filename) {
-		return null;
+	private static CharStream ANTLRFileStream(String filename) {
+		return (CharStream) filename.chars();
 	}
 
 }

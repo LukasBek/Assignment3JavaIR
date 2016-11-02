@@ -4,7 +4,6 @@ import java.util.LinkedList;
 
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
-import compiler.FRONTEND.Assignment4grammarParser;
 import compiler.FRONTEND.Assignment4grammarParser.DateContext;
 import compiler.FRONTEND.Assignment4grammarParser.DumplineContext;
 import compiler.FRONTEND.Assignment4grammarParser.EntriesContext;

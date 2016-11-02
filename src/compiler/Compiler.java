@@ -13,8 +13,10 @@ public class Compiler {
 		
 		try {
 			Compiler compiler = new Compiler(args[0]);
+			compiler.generateIR();
 			
-			IR ir = compiler.generateIR();
+//			IR ir = compiler.generateIR();
+			
 		} catch (Exception e) {
 			e.getMessage();
 		}
