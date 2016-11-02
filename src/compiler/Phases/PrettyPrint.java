@@ -98,115 +98,137 @@ public class PrettyPrint extends IRElementVisitor<Integer> {
 
 	@Override
 	public Integer visitTime(Time e) throws VisitorException {
-		// TODO Auto-generated method stub
+		pp.print(e.toString());
 		return null;
 	}
 
 	@Override
 	public Integer visitPacket(Packet e) throws VisitorException {
-		// TODO Auto-generated method stub
+		visitMac(e.getMac1());
+		visitMac(e.getMac2());
+		visitType(e.getType());
+		visitLength(e.getLength());
+		visitIpv4conten(e.getIpv4Content());
 		return null;
 	}
 
 	@Override
 	public Integer visitIpv4conten(Ipv4Content e) throws VisitorException {
-		// TODO Auto-generated method stub
+		visitIpv4fields(e.getIpv4Fields());
+		pp.print(e.toString());
 		return null;
 	}
 
 	@Override
 	public Integer visitIpv4ttl(Ipv4Ttl e) throws VisitorException {
-		// TODO Auto-generated method stub
+		pp.print(e.toString());
 		return null;
 	}
 
 	@Override
 	public Integer visitIpv4flags(Ipv4Flags e) throws VisitorException {
-		// TODO Auto-generated method stub
+		visitFlagvalues(e.getfV());
 		return null;
 	}
 
 	@Override
 	public Integer visitDumpline(DumpLine e) throws VisitorException {
-		// TODO Auto-generated method stub
+		//hehe
 		return null;
 	}
 
 	@Override
 	public Integer visitLength(Length e) throws VisitorException {
-		// TODO Auto-generated method stub
+		visitLength(e);
 		return null;
 	}
 
 	@Override
 	public Integer visitType(Type e) throws VisitorException {
-		// TODO Auto-generated method stub
+		visitIpv4(e.getIpv4());
 		return null;
 	}
 
 	@Override
 	public Integer visitIpv4id(Ipv4Id e) throws VisitorException {
-		// TODO Auto-generated method stub
+		pp.print(e.toString());
 		return null;
 	}
 
 	@Override
 	public Integer visitMac(Mac e) throws VisitorException {
-		// TODO Auto-generated method stub
+		pp.print(e.toString());
 		return null;
 	}
 
 	@Override
 	public Integer visitIpv4offset(Ipv4Offset e) throws VisitorException {
-		// TODO Auto-generated method stub
+		pp.print(e.toString());
 		return null;
 	}
 
 	@Override
 	public Integer visitProtinfo(ProtInfo e) throws VisitorException {
-		// TODO Auto-generated method stub
+		visitLength(e.getLength());
+		visitProtname(e.getProtName());
 		return null;
 	}
 
 	@Override
 	public Integer visitIpv4proto(Ipv4Proto e) throws VisitorException {
-		// TODO Auto-generated method stub
+		visitProtname(e.getProtName());
+		pp.print(e.toString());		
 		return null;
 	}
 
 	@Override
 	public Integer visitIpv4(Ipv4 e) throws VisitorException {
-		// TODO Auto-generated method stub
+		visitTag(e.getTag());
 		return null;
 	}
 
 	@Override
 	public Integer visitFlagvalues(FlagValues e) throws VisitorException {
-		// TODO Auto-generated method stub
+		pp.print(e.toString());
 		return null;
 	}
 
 	@Override
 	public Integer visitIpv4tos(Ipv4Tos e) throws VisitorException {
-		// TODO Auto-generated method stub
+		pp.print(e.toString());
 		return null;
 	}
 
 	@Override
 	public Integer visitProtname(ProtName e) throws VisitorException {
-		// TODO Auto-generated method stub
+		pp.print(e.toString());
 		return null;
 	}
 
 	@Override
 	public Integer visitIpv4fields(Ipv4Fields e) throws VisitorException {
-		// TODO Auto-generated method stub
+		visitIpv4tos(e.getIpv4Tos());
+		visitIpv4ttl(e.getIpv4Ttl());
+		visitIpv4id(e.getIpv4Id());
+		visitIpv4offset(e.getIpv4Offset());
+		visitIpv4flags(e.getIpv4Flags());
+		visitIpv4proto(e.getIpv4Proto());
+		visitLength(e.getLength());
+		
 		return null;
 	}
 
 	@Override
 	public Integer visitTag(Tag e) throws VisitorException {
-		// TODO Auto-generated method stub
+		pp.print(e.toString());
 		return null;
+	}
+
+	public static void print(IR ir) {
+		try {
+			new PrettyPrint().visitEntries(ir.e); 
+		} catch (VisitorException e1) {
+			e1.printStackTrace();
+		}
 	}
 }

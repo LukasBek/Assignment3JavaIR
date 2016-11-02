@@ -1,7 +1,7 @@
 package compiler;
 
 import compiler.IR.IR;
-import compiler.Phases.PrettyPrinter;
+import compiler.Phases.PrettyPrint;
 import exceptions.CompilerException;
 import exceptions.IRParserException;
 
@@ -31,7 +31,7 @@ public class Compiler {
 			ir = IR.Build(this.filename);
 			System.out.println("Parsing finish");
 			System.out.println("PrettyPrinter:");
-			PrettyPrinter.print(ir.e);
+			PrettyPrint.print(ir.e);
 		} catch (IRParserException e) {
 			throw new CompilerException(e.getMessage());
 		}
