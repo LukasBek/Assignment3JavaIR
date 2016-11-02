@@ -92,7 +92,7 @@ public class PrettyPrint extends IRElementVisitor<Integer> {
 
 	@Override
 	public Integer visitDate(Date e) throws VisitorException {
-		pp.print();
+		pp.print(e.toString());
 		return null;
 	}
 
