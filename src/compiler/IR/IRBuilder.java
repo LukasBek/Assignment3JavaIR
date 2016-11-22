@@ -1,5 +1,6 @@
 package compiler.IR;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
@@ -31,6 +32,8 @@ import compiler.FRONTEND.Assignment4grammarVisitor;
 public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignment4grammarVisitor<IR>{
 	DumpLine dumpLine;
 
+	ArrayList<String> ips = new ArrayList<String>();
+	
 	@Override
 	public NWEntries visitEntries(EntriesContext ctx) {
 		LinkedList<NWEntry> entry = new LinkedList<NWEntry>();
@@ -89,6 +92,7 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 		Ipv4Fields fields = visitIpv4fields(ctx.ipv4fields());
 		String adr1S = ctx.IPV4ADR(0).getText();
 		String adr2S = ctx.IPV4ADR(1).getText();
+		ips.add(adr1S +"->"+ adr2S);
 		Ipv4ADR adr1 = convertAddress(adr1S);
 		Ipv4ADR adr2 = convertAddress(adr2S);
 		ProtInfo prot = visitProtinfo(ctx.protinfo());
