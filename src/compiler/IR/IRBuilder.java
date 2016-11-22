@@ -33,6 +33,7 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 	DumpLine dumpLine;
 
 	ArrayList<String> ips = new ArrayList<String>();
+	ArrayList<String> macs = new ArrayList<String>();
 	
 	@Override
 	public NWEntries visitEntries(EntriesContext ctx) {
@@ -79,6 +80,7 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 	public Packet visitPacket(PacketContext ctx) {
 		Mac mac1 = visitMac(ctx.mac(0));
 		Mac mac2 = visitMac(ctx.mac(1));
+		macs.add(mac1+"->"+mac2);
 		Type type = visitType(ctx.type());
 		Length length = visitLength(ctx.length());
 		Ipv4Content content = visitIpv4content(ctx.ipv4content());
@@ -92,9 +94,12 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 		Ipv4Fields fields = visitIpv4fields(ctx.ipv4fields());
 		String adr1S = ctx.IPV4ADR(0).getText();
 		String adr2S = ctx.IPV4ADR(1).getText();
-		ips.add(adr1S +"->"+ adr2S);
 		Ipv4ADR adr1 = convertAddress(adr1S);
 		Ipv4ADR adr2 = convertAddress(adr2S);
+		ips.add(adr1 +"->"+ adr2);
+		for (int i = 0; i < ips.size(); i++) {
+			
+		}
 		ProtInfo prot = visitProtinfo(ctx.protinfo());
 		dumpLine = new DumpLine();
 		for (int i = 0; i < ctx.dumpline().size(); i++){
