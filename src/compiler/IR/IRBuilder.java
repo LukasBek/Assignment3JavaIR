@@ -32,8 +32,7 @@ import compiler.FRONTEND.Assignment4grammarVisitor;
 public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignment4grammarVisitor<IR>{
 	DumpLine dumpLine;
 
-	ArrayList<String> ips = new ArrayList<String>();
-	ArrayList<String> macs = new ArrayList<String>();
+	
 	
 	@Override
 	public NWEntries visitEntries(EntriesContext ctx) {
@@ -96,10 +95,7 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 		String adr2S = ctx.IPV4ADR(1).getText();
 		Ipv4ADR adr1 = convertAddress(adr1S);
 		Ipv4ADR adr2 = convertAddress(adr2S);
-		ips.add(adr1 +"->"+ adr2);
-		for (int i = 0; i < ips.size(); i++) {
-			
-		}
+
 		ProtInfo prot = visitProtinfo(ctx.protinfo());
 		dumpLine = new DumpLine();
 		for (int i = 0; i < ctx.dumpline().size(); i++){
