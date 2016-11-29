@@ -79,10 +79,12 @@ public class IRBuilder extends AbstractParseTreeVisitor<IR> implements Assignmen
 	public Packet visitPacket(PacketContext ctx) {
 		Mac mac1 = visitMac(ctx.mac(0));
 		Mac mac2 = visitMac(ctx.mac(1));
-		macs.add(mac1+"->"+mac2);
 		Type type = visitType(ctx.type());
 		Length length = visitLength(ctx.length());
 		Ipv4Content content = visitIpv4content(ctx.ipv4content());
+		
+		
+		
 		Packet packet = new Packet(mac1, mac2, type, length, content);
 		return packet;
 	}
