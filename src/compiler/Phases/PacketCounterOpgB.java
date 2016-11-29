@@ -9,41 +9,41 @@ import support.IRElementVisitor;
 import support.VisitorException;
 
 public class PacketCounterOpgB extends IRElementVisitor<Integer> {
-	
+
 	private ArrayList<IpToIp> ips = new ArrayList<IpToIp>();
-	 
+
 	private class PrettyPrinter {
 
 		private PrintStream ps;
 		private int indent=0;
 		private int width=2;
 		private boolean isindented = false;
-		
+
 		public PrettyPrinter() {
 			this(System.out);
 		}
-		
+
 		public PrettyPrinter(PrintStream ps) {
 			this.ps = ps;
 		}
-		
+
 		public void in() {
 			indent+=width;
 		}
-		
+
 		public void out() {
 			indent-=width;
 			if (indent<0) {
 				indent=0;
 			}
 		}
-		
+
 		private void indent() {
 			if (isindented) return;
 			for (int i=0;i<this.indent;i++) ps.print(' ');
 			isindented=true;
 		}
-		
+
 		public void println(String s) {
 			this.indent();
 			ps.println(s);
@@ -55,31 +55,34 @@ public class PacketCounterOpgB extends IRElementVisitor<Integer> {
 			ps.print(s);
 		}
 	}
-	
-	private PrettyPrinter pp = new PrettyPrinter();
-	
-//	public Integer NWEntries(NWEntries e){
-//		
-//		for (NWEntry c : e.getEntry()){
-//			visitEntry(c);
-//		}
-//		return null;
-//	}
-//
-//	private void visitEntry(NWEntry e) {
-//		
-//		
-//		
-//	}
 
-	
+	private PrettyPrinter pp = new PrettyPrinter();
+
+	//	public Integer NWEntries(NWEntries e){
+	//		
+	//		for (NWEntry c : e.getEntry()){
+	//			visitEntry(c);
+	//		}
+	//		return null;
+	//	}
+	//
+	//	private void visitEntry(NWEntry e) {
+	//		
+	//		
+	//		
+	//	}
+
+
 	@Override
 	public Integer visitEntries(compiler.IR.NWEntries e) throws VisitorException {
-		
+
 		for (NWEntry c : e.getEntry() ) {
 			visitEntry(c);
 		}
-		
+		for (int i = 0; i < ips.size(); i++) {
+			System.out.println(ips.get(i).ipv4adr1.toString() + " -> " + ips.get(i).ipv4adr2.toString() + ": " + ips.get(i).count) ; 			
+		}
+
 		return null;
 	}
 
@@ -89,7 +92,7 @@ public class PacketCounterOpgB extends IRElementVisitor<Integer> {
 		visitTime(e.getTime());
 		visitDate(e.getDate());
 		visitPacket(e.getPacket());
-		
+
 		return null;
 	}
 
@@ -116,11 +119,26 @@ public class PacketCounterOpgB extends IRElementVisitor<Integer> {
 	@Override
 	public Integer visitIpv4conten(Ipv4Content e) throws VisitorException {
 		visitIpv4fields(e.getIpv4Fields());
-		
-//		ips.add(adr1 +"->"+ adr2);
+
+		//		ips.add(adr1 +"->"+ adr2);
 		IpToIp ipToIpNew = new IpToIp(e.getAdress1(), e.getAdress2(), 1);
-		if (ips)
-		ips.add(new IpToIp(e.getAdress1(), e.getAdress2(), count))
+		int count = 0;
+		boolean addNew = false;
+		for (int i = 0; i < ips.size(); i++) {
+			addNew = true;
+			if (ips.get(i).ipv4adr1.equals(ipToIpNew.ipv4adr1)
+					&& ips.get(i).ipv4adr2.equals(ipToIpNew.ipv4adr2)) {
+				count = ips.get(i).count++;
+				ipToIpNew.count = count;
+				ips.set(i, ipToIpNew);
+				addNew = false;
+				break;
+			}
+		}
+		if(addNew){
+			ips.add(ipToIpNew);
+		}
+		
 		
 		return null;
 	}
@@ -212,7 +230,7 @@ public class PacketCounterOpgB extends IRElementVisitor<Integer> {
 		visitIpv4flags(e.getIpv4Flags());
 		visitIpv4proto(e.getIpv4Proto());
 		visitLength(e.getLength());
-		
+
 		return null;
 	}
 
@@ -228,18 +246,42 @@ public class PacketCounterOpgB extends IRElementVisitor<Integer> {
 			e1.printStackTrace();
 		}
 	}
-	
+
 	private class IpToIp {
 		Ipv4ADR ipv4adr1;
 		Ipv4ADR ipv4adr2;
 		int count = 0;
-		
+
 		public IpToIp(Ipv4ADR ipv4adr1, Ipv4ADR ipv4adr2, int count) {
 			this.ipv4adr1 = ipv4adr1;
 			this.ipv4adr2 = ipv4adr2;
 			this.count = count;
 		}
-		
+
+		public Ipv4ADR getIpv4adr1() {
+			return ipv4adr1;
+		}
+
+		public void setIpv4adr1(Ipv4ADR ipv4adr1) {
+			this.ipv4adr1 = ipv4adr1;
+		}
+
+		public Ipv4ADR getIpv4adr2() {
+			return ipv4adr2;
+		}
+
+		public void setIpv4adr2(Ipv4ADR ipv4adr2) {
+			this.ipv4adr2 = ipv4adr2;
+		}
+
+		public int getCount() {
+			return count;
+		}
+
+		public void setCount(int count) {
+			this.count = count;
+		}
+
 	}
-	
+
 }
