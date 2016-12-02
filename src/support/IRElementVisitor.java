@@ -2,11 +2,12 @@ package support;
 
 import support.*;
 import compiler.IR.*;
+import exceptions.IntrusionException;
 
 public abstract class IRElementVisitor<T> {
 	
 	public abstract T visitEntries(NWEntries e) throws VisitorException;
-	public abstract T visitEntry(NWEntry e) throws VisitorException;
+	public abstract T visitEntry(NWEntry e) throws VisitorException, IntrusionException;
 	public abstract T visitDate(Date e) throws VisitorException;
 	public abstract T visitTime(Time e) throws VisitorException;
 	public abstract T visitPacket(Packet e) throws VisitorException;

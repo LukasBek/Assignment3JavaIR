@@ -5,10 +5,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import compiler.IR.*;
+import exceptions.IntrusionException;
 import support.IRElementVisitor;
 import support.VisitorException;
 
-public class IntrusionDetectionOpgC extends IRElementVisitor<Integer> {
+public class IntrusionDetectionOpgC_ extends IRElementVisitor<Integer> {
 
 	private ArrayList<MacIp> ips = new ArrayList<MacIp>();
 	private MacIp macIp1 = new MacIp(null, null); 
@@ -85,16 +86,20 @@ public class IntrusionDetectionOpgC extends IRElementVisitor<Integer> {
 	public Integer visitEntries(compiler.IR.NWEntries e) throws VisitorException {
 
 		for (NWEntry c : e.getEntry() ) {
-			visitEntry(c);
+			try {
+				visitEntry(c);
+			} catch (IntrusionException e1) {
+				e1.printStackTrace();
+			}
 		}
 
-		
-		
+
+
 		return null;
 	}
 
 	@Override
-	public Integer visitEntry(NWEntry e) throws VisitorException {
+	public Integer visitEntry(NWEntry e) throws VisitorException, IntrusionException {
 
 		visitTime(e.getTime());
 		visitDate(e.getDate());
@@ -102,12 +107,45 @@ public class IntrusionDetectionOpgC extends IRElementVisitor<Integer> {
 
 		macIp1 = new MacIp(mac1, ipv4adr1);
 		macIp2 = new MacIp(mac2, ipv4adr2);
+
+		//Her tjekkes om ip1 har ændret sin mac adresse:
+		for (int i = 0; i < ips.size(); i++) {
+			if (macIp1.getIpv4adr().equals(ips.get(i).getIpv4adr())) {
+				if (!(macIp1.getMac().equals(ips.get(i).mac))) {
+					throw new IntrusionException("Ikke samme mac adresse!" + macIp1.getIpv4adr());
+				}
+			}
+		}
+		//Her tjekkes om ip2 har ændret sin mac adresse:
+		for (int i = 0; i < ips.size(); i++) {
+			if (macIp2.getIpv4adr().equals(ips.get(i).getIpv4adr())) {
+				if (!(macIp2.getMac().equals(ips.get(i).mac))) {
+					throw new IntrusionException("Ikke samme mac adresse!" + macIp2.getIpv4adr());
+				}
+			}
+		}
 		
+		//Her tjekkes om en mac adresse har en ny IP:
+				for (int i = 0; i < ips.size(); i++) {
+					if (macIp1.getMac().equals(ips.get(i).getMac())) {
+						if (!(macIp1.getIpv4adr().equals(ips.get(i).ipv4adr))) {
+							throw new IntrusionException("Ikke samme IP adresse!" + macIp1.getMac());
+						}
+					}
+				}
+
+		//Her tjekkes om en mac adresse har en ny IP:
+		for (int i = 0; i < ips.size(); i++) {
+			if (macIp2.getMac().equals(ips.get(i).getMac())) {
+				if (!(macIp2.getIpv4adr().equals(ips.get(i).ipv4adr))) {
+					throw new IntrusionException("Ikke samme IP adresse!" + macIp2.getMac());
+				}
+			}
+		}
+
 		ips.add(macIp1);
 		ips.add(macIp2);
-		
-		
-		
+
 		return null;
 	}
 
@@ -123,10 +161,10 @@ public class IntrusionDetectionOpgC extends IRElementVisitor<Integer> {
 
 	@Override
 	public Integer visitPacket(Packet e) throws VisitorException {
-		
+
 		mac1 = e.getMac1();
 		mac2 = e.getMac2();
-		
+
 		visitMac(e.getMac1());
 		visitMac(e.getMac2());
 		visitType(e.getType());
@@ -140,8 +178,8 @@ public class IntrusionDetectionOpgC extends IRElementVisitor<Integer> {
 		visitIpv4fields(e.getIpv4Fields());
 		ipv4adr1 = e.getAdress1();
 		ipv4adr2 = e.getAdress2();
-		
-		
+
+
 		return null;
 	}
 
@@ -181,7 +219,7 @@ public class IntrusionDetectionOpgC extends IRElementVisitor<Integer> {
 	@Override
 	public Integer visitMac(Mac e) throws VisitorException {
 
-		
+
 
 		return null;
 	}
@@ -245,7 +283,7 @@ public class IntrusionDetectionOpgC extends IRElementVisitor<Integer> {
 
 	public static void print(IR ir) {
 		try {
-			new IntrusionDetectionOpgC().visitEntries(ir.e); 
+			new IntrusionDetectionOpgC_().visitEntries(ir.e); 
 		} catch (VisitorException e1) {
 			e1.printStackTrace();
 		}
