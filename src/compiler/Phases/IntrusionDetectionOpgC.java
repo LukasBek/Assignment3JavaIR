@@ -13,8 +13,8 @@ public class IntrusionDetectionOpgC extends IRElementVisitor<Integer> {
 	private ArrayList<MacIp> ips = new ArrayList<MacIp>();
 	private MacIp macIp1 = new MacIp(null, null); 
 	private MacIp macIp2 = new MacIp(null, null); 
-	String mac1;
-	String mac2;
+	Mac mac1;
+	Mac mac2;
 	Ipv4ADR ipv4adr1;
 	Ipv4ADR ipv4adr2;
 
@@ -86,9 +86,10 @@ public class IntrusionDetectionOpgC extends IRElementVisitor<Integer> {
 
 		for (NWEntry c : e.getEntry() ) {
 			visitEntry(c);
-
 		}
 
+		
+		
 		return null;
 	}
 
@@ -99,6 +100,14 @@ public class IntrusionDetectionOpgC extends IRElementVisitor<Integer> {
 		visitDate(e.getDate());
 		visitPacket(e.getPacket());
 
+		macIp1 = new MacIp(mac1, ipv4adr1);
+		macIp2 = new MacIp(mac2, ipv4adr2);
+		
+		ips.add(macIp1);
+		ips.add(macIp2);
+		
+		
+		
 		return null;
 	}
 
@@ -114,6 +123,10 @@ public class IntrusionDetectionOpgC extends IRElementVisitor<Integer> {
 
 	@Override
 	public Integer visitPacket(Packet e) throws VisitorException {
+		
+		mac1 = e.getMac1();
+		mac2 = e.getMac2();
+		
 		visitMac(e.getMac1());
 		visitMac(e.getMac2());
 		visitType(e.getType());
@@ -168,7 +181,7 @@ public class IntrusionDetectionOpgC extends IRElementVisitor<Integer> {
 	@Override
 	public Integer visitMac(Mac e) throws VisitorException {
 
-		mac1 = e.getAddress();
+		
 
 		return null;
 	}
